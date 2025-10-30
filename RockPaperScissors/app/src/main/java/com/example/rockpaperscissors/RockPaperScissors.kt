@@ -1,33 +1,36 @@
 package com.example.rockpaperscissors
 
-fun main(){
-    var computerChoice = ""
-    var playerChoice =""
-    println("Rock Paper Scissors? Enter choice")
-    playerChoice = readln()
+import java.util.Locale
 
+fun main(){
+
+    println("Rock Paper Scissors? Enter choice")
+    var playerChoice =readln().lowercase()
+
+
+
+    while (playerChoice != "rock" && playerChoice != "paper" && playerChoice != "scissors") {
+        println("Please enter AGAIN")
+         playerChoice =readln().lowercase()
+
+    }
     val randomNumber = (1..3).random()
 
-    computerChoice = when (randomNumber) {
-        1 -> {
-            "Rock"
-        }
-        2 -> {
-            "Paper"
-        }
-        else -> {
-            "Scissors"
-        }
+    val computerChoice = when (randomNumber) {
+        1 -> "rock"
+        2 -> "paper"
+        else -> "scissors"
     }
 
-    println(computerChoice)
+    println("Computer choice: $computerChoice")
+
 
 
     val winner = when  {
         playerChoice == computerChoice -> "Tie"
-        playerChoice == "Rock" && computerChoice == "Scissors"-> "Player"
-        playerChoice == "Paper" && computerChoice == "Rock"-> "Player"
-        playerChoice == "Scissors" && computerChoice == "Paper"-> "Player"
+        playerChoice == "rock" && computerChoice == "scissors"-> "Player"
+        playerChoice == "paper" && computerChoice == "rock"-> "Player"
+        playerChoice == "scissors" && computerChoice == "paper"-> "Player"
 
         else -> "Computer"
     }
@@ -37,5 +40,6 @@ fun main(){
     } else {
         println("$winner has won")
     }
+
 
 }
